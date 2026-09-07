@@ -36,7 +36,7 @@
         ])->filter(fn ($link) => Route::has($link['route']));
     @endphp
 
-    <header class="sticky top-0 z-50 px-3 pt-3 sm:px-4 sm:pt-4">
+    <header class="print-hidden sticky top-0 z-50 px-3 pt-3 sm:px-4 sm:pt-4">
         <div class="nav-card mx-auto flex w-full max-w-[1120px] items-center justify-between gap-4 rounded-[24px] px-4 py-3 sm:px-5">
             <a href="{{ route('dashboard') }}"
                class="-rotate-[1.5deg] inline-flex items-center gap-2.5 rounded-[18px] border-[3px] border-ink bg-paper-raised px-3 py-1.5 shadow-[3px_3px_0_0_var(--ds-shadow)] transition-transform hover:rotate-0 sm:px-4">
@@ -83,7 +83,7 @@
         @yield('content')
     </main>
 
-    <footer class="mx-auto mt-16 w-full max-w-[1120px] px-4 pb-8 pt-8 sm:px-6">
+    <footer class="print-hidden mx-auto mt-16 w-full max-w-[1120px] px-4 pb-8 pt-8 sm:px-6">
         <div class="flex flex-col items-center justify-between gap-3 border-t-[3px] border-dashed border-ink/25 pt-6 sm:flex-row">
             <div class="flex flex-col items-center gap-1 text-center sm:flex-row sm:gap-2 sm:text-left">
                 <span class="font-display text-lg font-semibold text-ink">Daily Sync</span>
