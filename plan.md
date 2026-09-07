@@ -4,4 +4,4 @@ Dashboard produktivitas all-in-one yang menggabungkan timer kerja dan pelacak ke
 - Habit Checklist: Daftar kebiasaan harian dengan checkbox dan kalkulasi persentase pencapaian hari ini.
 - Daily Quick Notes: Catatan tempel sederhana untuk to-do harian yang tersimpan di localStorage.
 - Dark / Light Mode Toggle: Penggantian tema tampilan secara dinamis menggunakan manipulasi class CSS dan DOM.
-- Export/Import Data: Fitur mengunduh riwayat habit ke file JSON dan mengunggahnya kembali.
+- Export/Import Data: Fitur mengunduh riwayat habit ke file PDF.
