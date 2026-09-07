@@ -27,6 +27,11 @@
                     <span class="material-symbols-outlined text-[16px]">today</span>
                     Hari Ini
                 </span>
+                <a href="{{ route('habits.export') }}"
+                   class="inline-flex items-center gap-1.5 rounded-full border-[3px] border-ink bg-paper-raised px-3 py-1 font-display text-[13px] font-semibold text-ink shadow-[3px_3px_0_0_var(--ds-shadow)] transition-transform hover:-translate-y-0.5 active:translate-y-0.5">
+                    <span class="material-symbols-outlined ms-fill text-coral-dark text-[16px]">picture_as_pdf</span>
+                    <span class="hidden sm:inline">Export PDF</span>
+                </a>
             </div>
         </div>
 
