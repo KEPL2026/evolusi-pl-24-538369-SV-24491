@@ -37,19 +37,23 @@ it('toggles a habit completion for today', function () {
         ->assertOk()
         ->assertJsonPath('completed', true);
 
-    $this->assertDatabaseHas('habit_completions', [
-        'habit_id' => $habit->id,
-        'completed_date' => $today,
-    ]);
+    $this->assertTrue(
+        HabitCompletion::query()
+            ->where('habit_id', $habit->id)
+            ->whereDate('completed_date', $today)
+            ->exists()
+    );
 
     $this->postJson(route('habits.toggle', $habit))
         ->assertOk()
         ->assertJsonPath('completed', false);
 
-    $this->assertDatabaseMissing('habit_completions', [
-        'habit_id' => $habit->id,
-        'completed_date' => $today,
-    ]);
+    $this->assertFalse(
+        HabitCompletion::query()
+            ->where('habit_id', $habit->id)
+            ->whereDate('completed_date', $today)
+            ->exists()
+    );
 });
 
 it('reports today progress on toggle responses', function () {
@@ -83,7 +87,7 @@ it('validates the habit name when updating', function () {
 
 it('deletes a habit and cascades its completions', function () {
     $habit = Habit::factory()
-        ->has(HabitCompletion::factory())
+        ->has(HabitCompletion::factory(), 'completions')
         ->create();
 
     $this->deleteJson(route('habits.destroy', $habit))

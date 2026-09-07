@@ -35,7 +35,7 @@ it('summarizes habits, focus sessions, and notes for today', function () {
         ->assertOk()
         ->assertSee('1 dari 2')
         ->assertSee('2 sesi fokus')
-        ->assertSee('Olahraga ringan')
+        ->assertSee('Minum air putih')
         ->assertSee('3 dibuat hari ini');
 
     $this->travelBack();
