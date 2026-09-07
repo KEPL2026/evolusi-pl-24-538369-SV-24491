@@ -1,4 +1,5 @@
 import './habits.js';
+import './pomodoro.js';
 
 const THEME_KEY = 'daily-sync.theme';
 const AUDIO_KEY = 'daily-sync.audio';
