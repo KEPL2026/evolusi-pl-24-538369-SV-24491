@@ -37,6 +37,7 @@
                         'title' => 'Pomodoro Timer',
                         'desc' => 'Sesi fokus 25 menit, istirahat pendek, dan notifikasi audio saat waktu habis.',
                         'tilt' => '-rotate-1',
+                        'route' => 'pomodoro.index',
                     ],
                     [
                         'icon' => 'checklist',
@@ -44,6 +45,7 @@
                         'title' => 'Habit Checklist',
                         'desc' => 'Cap kebiasaan harian satu per satu dan pantau persentase pencapaianmu.',
                         'tilt' => 'rotate-1',
+                        'route' => 'habits.index',
                     ],
                     [
                         'icon' => 'note_alt',
@@ -51,19 +53,34 @@
                         'title' => 'Daily Quick Notes',
                         'desc' => 'Catatan tempel ber-pin untuk to-do harian yang tersimpan di database.',
                         'tilt' => '-rotate-1',
+                        'route' => 'notes.index',
                     ],
                 ] as $feature)
-                    <article @class(['sh-2 rounded-[24px] border-[3px] border-ink bg-paper-raised p-6 transition-transform hover:-translate-y-1', $feature['tilt']])>
+                    @php
+                        $active = Route::has($feature['route']);
+                        $cardClass = 'sh-2 flex flex-col rounded-[24px] border-[3px] border-ink bg-paper-raised p-6 transition-transform hover:-translate-y-1 '.$feature['tilt'];
+                    @endphp
+                    @if ($active)
+                        <a href="{{ route($feature['route']) }}" class="{{ $cardClass }}">
+                    @else
+                        <article class="{{ $cardClass }}">
+                    @endif
                         <span @class(['mb-4 flex h-11 w-11 items-center justify-center rounded-xl border-[3px] border-ink shadow-[3px_3px_0_0_var(--ds-shadow)]', $feature['tile']])>
                             <span class="material-symbols-outlined text-[22px]">{{ $feature['icon'] }}</span>
                         </span>
                         <h3 class="font-display text-xl font-semibold text-ink">{{ $feature['title'] }}</h3>
                         <p class="mt-2 text-[15px] leading-6 text-ink-soft">{{ $feature['desc'] }}</p>
-                        <span class="mt-5 inline-flex items-center gap-1.5 rounded-full border-2 border-ink bg-paper px-3 py-1 font-display text-[12px] font-semibold text-ink-soft">
-                            <span class="material-symbols-outlined text-[14px]">construction</span>
-                            Segera hadir
-                        </span>
-                    </article>
+                        @if (! $active)
+                            <span class="mt-5 inline-flex items-center gap-1.5 self-start rounded-full border-2 border-ink bg-paper px-3 py-1 font-display text-[12px] font-semibold text-ink-soft">
+                                <span class="material-symbols-outlined text-[14px]">construction</span>
+                                Segera hadir
+                            </span>
+                        @endif
+                    @if ($active)
+                        </a>
+                    @else
+                        </article>
+                    @endif
                 @endforeach
             </div>
         </section>
